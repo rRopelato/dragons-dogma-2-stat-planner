@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dragon's Dogma 2 Stat Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Dragon's Dogma 2</p>
+        <h1>Stat Leveling Planner</h1>
+        <p class="subtitle">Plan vocation ranges, preview stat caps, and simulate growth from level 1 to 999.</p>
+      </div>
+      <div class="header-badge">
+        <span>Level</span>
+        <strong id="header-level">200</strong>
+      </div>
+    </header>
+
+    <main class="app-layout">
+      <aside class="sidebar">
+        <section class="panel control-panel">
+          <h2>Active Setup</h2>
+
+          <label class="field">
+            <div class="field-header">
+              <span>Target Level</span>
+              <strong class="level-display" id="target-level-display">200</strong>
+            </div>
+            <input type="range" id="target-level" min="1" max="999" value="200">
+            <input type="number" id="target-level-num" class="level-input" min="1" max="999" value="200">
+          </label>
+
+          <label class="field add-build-field">
+            <span>Add to Build</span>
+            <select id="add-vocation">
+              <option value="archer">Archer</option>
+              <option value="fighter">Fighter</option>
+              <option value="mage" selected>Mage</option>
+              <option value="thief">Thief</option>
+              <option value="mysticSpearhand">Mystic Spearhand</option>
+              <option value="magickArcher">Magick Archer</option>
+              <option value="sorcerer">Sorcerer</option>
+              <option value="trickster">Trickster</option>
+              <option value="warrior">Warrior</option>
+              <option value="warfarer">Warfarer</option>
+            </select>
+            <div class="field-header">
+              <span>Levels to add</span>
+              <strong class="level-display" id="add-levels-display">1</strong>
+            </div>
+            <input type="range" id="add-levels" min="1" max="199" value="1">
+            <input type="number" id="add-levels-num" class="level-input" min="1" max="199" value="1">
+            <p class="add-preview" id="add-preview"></p>
+            <button type="button" class="btn-primary" id="add-block-btn">Add</button>
+          </label>
+
+          <label class="field">
+            <span>Current Active Vocation</span>
+            <select id="active-vocation">
+              <option value="archer">Archer</option>
+              <option value="fighter" selected>Fighter</option>
+              <option value="mage">Mage</option>
+              <option value="thief">Thief</option>
+              <option value="mysticSpearhand">Mystic Spearhand</option>
+              <option value="magickArcher">Magick Archer</option>
+              <option value="sorcerer">Sorcerer</option>
+              <option value="trickster">Trickster</option>
+              <option value="warrior">Warrior</option>
+              <option value="warfarer">Warfarer</option>
+            </select>
+            <p class="field-hint">Swaps dynamic flat offsets on final displayed stats without changing your leveling history.</p>
+          </label>
+
+          <label class="field">
+            <span>Starter Class</span>
+            <select id="starter-vocation">
+              <option value="archer">Archer</option>
+              <option value="fighter" selected>Fighter</option>
+              <option value="mage">Mage</option>
+              <option value="thief">Thief</option>
+            </select>
+            <p class="field-hint">Sets the level 1 vocation used at the start of the build.</p>
+          </label>
+
+          <div class="action-row">
+            <button type="button" class="btn-secondary" id="copy-btn">Copy build link</button>
+            <button type="button" class="btn-secondary" id="reset-btn">Reset build</button>
+          </div>
+        </section>
+
+        <section class="panel level-blocks">
+          <div class="section-header">
+            <h3>Build History</h3>
+            <span class="build-progress" id="build-progress"></span>
+          </div>
+          <p class="validation-error" id="validation-error" hidden></p>
+          <div class="block-list" id="block-list"></div>
+        </section>
+      </aside>
+
+      <section class="dashboard">
+        <div class="dashboard-top">
+          <section class="panel stat-bars-panel">
+            <h3>Stats</h3>
+            <div class="stat-bars-primary" id="stat-bars"></div>
+            <div class="stat-bars-secondary" id="secondary-stats"></div>
+          </section>
+        </div>
+
+        <section class="panel stat-chart">
+          <div class="chart-header">
+            <h3>Growth Trajectory</h3>
+            <span class="chart-hint">Hover chart to inspect any level</span>
+          </div>
+          <div class="chart-container">
+            <canvas id="growth-chart"></canvas>
+          </div>
+        </section>
+
+        <div class="summary-strip" id="summary-strip"></div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>Inspired by the <a href="https://stackoverflow.github.io/dragons-dogma-stat-planner/" target="_blank" rel="noopener">Dark Arisen stat planner</a>.
+      Growth data from <a href="https://dragonsdogma2.wiki.fextralife.com/Stat+Levels" target="_blank" rel="noopener">Fextralife</a>.</p>
+      <br>Made by <a href="https://www.github.com/rropelato" target="_blank" rel="noopener">Ropelato</a>.
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/chart.js"></script>
+  <script src="js/build.js"></script>
+  <script src="js/gui.js"></script>
+</body>
+</html>
