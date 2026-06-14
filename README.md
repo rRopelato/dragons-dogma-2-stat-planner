@@ -33,20 +33,6 @@ The simulator follows the data currently embedded in the project:
 - Permanent caps are applied before the active vocation offsets are shown.
 - The active vocation changes the displayed offsets only; it does not rewrite the leveling history.
 
-## Running locally
-
-Any static file server works. For example:
-
-```bash
-python -m http.server 8080
-```
-
-Then open:
-
-```text
-http://localhost:8080
-```
-
 ## Sharing builds
 
 The current build is stored in the URL hash. Copying the link preserves:
@@ -56,21 +42,7 @@ The current build is stored in the URL hash. Copying the link preserves:
 - starter class
 - level block sequence
 
-## Deployment
-
-The project is suitable for GitHub Pages because it is fully static.
-
-1. Push the repository to GitHub.
-2. Open **Settings → Pages**.
-3. Select the `main` branch and the repository root as the source.
-4. Visit the published Pages URL.
-
 ## Credits
 
 - Growth data reference: [Fextralife Stat Levels](https://dragonsdogma2.wiki.fextralife.com/Stat+Levels)
 - Layout inspiration: [Dark Arisen stat planner](https://github.com/stackoverflow/dragons-dogma-stat-planner)
-
-## Notes
-
-- This project loads Chart.js from a CDN.
-- If the chart ever appears empty on first load, it is usually a bootstrap timing issue between chart initialization and the first render.
