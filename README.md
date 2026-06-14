@@ -33,6 +33,7 @@ The simulator follows the data currently embedded in the project:
 - Permanent caps are applied before the active vocation offsets are shown.
 - The active vocation changes the displayed offsets only; it does not rewrite the leveling history.
 
+
 ## Sharing builds
 
 The current build is stored in the URL hash. Copying the link preserves:
@@ -46,3 +47,4 @@ The current build is stored in the URL hash. Copying the link preserves:
 
 - Growth data reference: [Fextralife Stat Levels](https://dragonsdogma2.wiki.fextralife.com/Stat+Levels)
 - Layout inspiration: [Dark Arisen stat planner](https://github.com/stackoverflow/dragons-dogma-stat-planner)
+- Support the project: [Ko-fi](https://ko-fi.com/ropelato)
